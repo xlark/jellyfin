@@ -36,16 +36,16 @@ spec:
         - containerPort: 8096
           protocol: TCP
         volumeMounts:
-        - mountPath: /data/media
-          name: media
+        - mountPath: /data/media/music
+          name: music
           readOnly: True
         - mountPath: /config
           name: jellyfin-config
       restartPolicy: Always
       volumes:
-      - name: media
+      - name: music
         persistentVolumeClaim:
-          claimName: media
+          claimName: music
       - name: jellyfin-config
         persistentVolumeClaim:
           claimName: jellyfin-config

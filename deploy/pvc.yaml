@@ -19,7 +19,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: jellyfin-media
+  name: jellyfin-music
   annotations:
     argocd.argoproj.io/sync-wave: "-5"
 spec:
@@ -30,7 +30,7 @@ spec:
     - ReadOnlyMany
   persistentVolumeReclaimPolicy: Retain 
   nfs: 
-    path: /export/jellyfin
+    path: /export/jellyfin/music
     server: galadriel.private.opequon.net
     readOnly: false
 ---
@@ -56,4 +56,4 @@ spec:
   resources:
     requests:
       storage: 1Mi
-  volumeName: jellyfin-media
+  volumeName: jellyfin-music
