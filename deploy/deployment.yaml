@@ -45,7 +45,7 @@ spec:
       volumes:
       - name: music
         persistentVolumeClaim:
-          claimName: music
+          claimName: jellyfin-music
       - name: jellyfin-config
         persistentVolumeClaim:
           claimName: jellyfin-config
