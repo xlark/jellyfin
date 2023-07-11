@@ -35,6 +35,24 @@ spec:
     readOnly: false
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jellyfin-video
+  annotations:
+    argocd.argoproj.io/sync-wave: "-5"
+spec:
+  capacity:
+    storage: 1Ti 
+  accessModes:
+    - ReadWriteMany 
+    - ReadOnlyMany
+  persistentVolumeReclaimPolicy: Retain 
+  nfs: 
+    path: /export/jellyfin/video/completed
+    server: galadriel.private.opequon.net
+    readOnly: false
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: jellyfin-config
@@ -57,3 +75,15 @@ spec:
     requests:
       storage: 1Mi
   volumeName: jellyfin-music
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyfin-video
+spec:
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 1Mi
+  volumeName: jellyfin-video

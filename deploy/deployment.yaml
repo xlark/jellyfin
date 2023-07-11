@@ -39,6 +39,9 @@ spec:
         - mountPath: /data/media/music
           name: music
           readOnly: True
+        - mountPath: /data/media/video
+          name: video
+          readOnly: True
         - mountPath: /config
           name: jellyfin-config
       restartPolicy: Always
@@ -46,6 +49,9 @@ spec:
       - name: music
         persistentVolumeClaim:
           claimName: jellyfin-music
+      - name: video
+        persistentVolumeClaim:
+          claimName: jellyfin-video
       - name: jellyfin-config
         persistentVolumeClaim:
           claimName: jellyfin-config
