@@ -39,8 +39,11 @@ spec:
         - mountPath: /data/media/music
           name: music
           readOnly: True
-        - mountPath: /data/media/video
-          name: video
+        - mountPath: /data/media/shows
+          name: shows
+          readOnly: True
+        - mountPath: /data/media/movies
+          name: movies
           readOnly: True
         - mountPath: /config
           name: jellyfin-config
@@ -49,9 +52,12 @@ spec:
       - name: music
         persistentVolumeClaim:
           claimName: jellyfin-music
-      - name: video
+      - name: shows
         persistentVolumeClaim:
-          claimName: jellyfin-video
+          claimName: jellyfin-shows
+      - name: movies
+        persistentVolumeClaim:
+          claimName: jellyfin-movies
       - name: jellyfin-config
         persistentVolumeClaim:
           claimName: jellyfin-config

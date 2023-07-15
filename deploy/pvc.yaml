@@ -37,7 +37,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: jellyfin-video
+  name: jellyfin-shows
   annotations:
     argocd.argoproj.io/sync-wave: "-5"
 spec:
@@ -48,7 +48,25 @@ spec:
     - ReadOnlyMany
   persistentVolumeReclaimPolicy: Retain 
   nfs: 
-    path: /export/jellyfin/video/completed
+    path: /export/jellyfin/video/shows
+    server: galadriel.private.opequon.net
+    readOnly: false
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jellyfin-movies
+  annotations:
+    argocd.argoproj.io/sync-wave: "-5"
+spec:
+  capacity:
+    storage: 1Ti 
+  accessModes:
+    - ReadWriteMany 
+    - ReadOnlyMany
+  persistentVolumeReclaimPolicy: Retain 
+  nfs: 
+    path: /export/jellyfin/video/movies
     server: galadriel.private.opequon.net
     readOnly: false
 ---
@@ -79,11 +97,23 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: jellyfin-video
+  name: jellyfin-shows
 spec:
   accessModes:
     - ReadOnlyMany
   resources:
     requests:
       storage: 1Mi
-  volumeName: jellyfin-video
+  volumeName: jellyfin-shows
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyfin-movies
+spec:
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 1Mi
+  volumeName: jellyfin-movies
