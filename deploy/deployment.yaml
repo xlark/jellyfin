@@ -44,10 +44,10 @@ spec:
           readOnly: True
         - mountPath: /data/media/shows
           name: shows
-          readOnly: True
+          readOnly: False
         - mountPath: /data/media/movies
           name: movies
-          readOnly: True
+          readOnly: False
         - mountPath: /config
           name: jellyfin-config
       restartPolicy: Always
