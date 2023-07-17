@@ -12,6 +12,9 @@ spec:
       labels:
         app: jellyfin
     spec:
+      securityContext:
+        supplementalGroups:
+          - 476600010
       containers:
       - env:
         - name: NODE_NAME
