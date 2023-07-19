@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jellyfin
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+  labels:
+    opequon.net/public-route: ""
+    route.openshift.io/termination: edge
+  namespace: jellyfin
+spec:
+  rules:
+    - host: fin.public.opequon.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: jellyfin
+                port: 
+                  number: 8096
+  tls:
+    - hosts:
+      - fin.public.opequon.net
+      secretName: jellyfin-tls-secret
+
