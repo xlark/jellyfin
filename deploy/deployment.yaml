@@ -46,10 +46,13 @@ spec:
           readOnly: True
         - mountPath: /data/media/shows
           name: shows
-          readOnly: False
+          readOnly: True
         - mountPath: /data/media/movies
           name: movies
-          readOnly: False
+          readOnly: True
+        - mountPath: /data/media/family_videos
+          name: family-videos
+          readOnly: True
         - mountPath: /config
           name: jellyfin-config
       restartPolicy: Always
@@ -63,6 +66,9 @@ spec:
       - name: movies
         persistentVolumeClaim:
           claimName: jellyfin-movies
+      - name: jellyfin-family-videos
+        persistentVolumeClaim:
+          claimName: jellyfin-family-videos
       - name: jellyfin-config
         persistentVolumeClaim:
           claimName: jellyfin-config
