@@ -84,7 +84,7 @@ spec:
     - ReadOnlyMany
   persistentVolumeReclaimPolicy: Retain 
   nfs: 
-    path: /export/jellyfin/video/family-videos
+    path: /export/jellyfin/video/family_videos
     server: galadriel.private.opequon.net
     readOnly: false
 ---
