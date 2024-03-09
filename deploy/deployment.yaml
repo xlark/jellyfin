@@ -66,7 +66,7 @@ spec:
       - name: movies
         persistentVolumeClaim:
           claimName: jellyfin-movies
-      - name: jellyfin-family-videos
+      - name: family-videos
         persistentVolumeClaim:
           claimName: jellyfin-family-videos
       - name: jellyfin-config
